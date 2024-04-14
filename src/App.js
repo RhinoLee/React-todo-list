@@ -1,16 +1,32 @@
 import './App.css';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
+function writeTodosToLocalStorage(todos) {
+  window.localStorage.setItem('todos', JSON.stringify(todos));
+}
 
 function App() {
-  const [todos, setTodos] = useState([
-    { id: 1, content: 'abc', isDone: true },
-    { id: 2, content: 'not done', isDone: false },
-  ]);
+  const id = useRef(1);
+  const [todos, setTodos] = useState(() => {
+    console.log('init');
+    let todosData = window.localStorage.getItem('todos') || '';
+    if (todosData) {
+      todosData = JSON.parse(todosData);
+      id.current = todosData[0].id + 1;
+    } else {
+      todosData = [];
+    }
+    return todosData;
+  });
 
   const [value, setValue] = useState('');
-  const id = useRef(3);
+
+  useEffect(() => {
+    writeTodosToLocalStorage(todos);
+    console.log(todos);
+  }, [todos]);
 
   const handleButtonClick = () => {
     setTodos([

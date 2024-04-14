@@ -1,6 +1,6 @@
 import './App.css';
-import styled from 'styled-components'
-import { MEDIA_QUERY_MD, MEDIA_QUERY_LG } from './constants/style'
+import styled from 'styled-components';
+import { MEDIA_QUERY_MD, MEDIA_QUERY_LG } from './constants/style';
 
 const TodoItemWrapper = styled.div`
   display: flex;
@@ -8,17 +8,19 @@ const TodoItemWrapper = styled.div`
   justify-content: center;
   padding: 8px 16px;
   border: 1px solid black;
-`
+`;
 
 const TodoContent = styled.div`
-  color: ${props => props.theme.colors.primary_300};
+  color: ${(props) => props.theme.colors.primary_300};
 
-  ${props => props.$isDone && `
+  ${(props) =>
+    props.$isDone &&
+    `
     text-decoration: line-through;
   `}
-`
+`;
 
-const TodoButtonWrapper = styled.div``
+const TodoButtonWrapper = styled.div``;
 
 const Button = styled.button`
   padding: 4px;
@@ -40,20 +42,20 @@ const Button = styled.button`
   & + & {
     margin-left: 4px;
   }
-`
+`;
 
 const RedButton = styled(Button)`
   color: red;
-`
+`;
 
 export default function TodoItem({ className, todo, handleDeleteTodo, handleToggleIsDone }) {
   const handleToggleClick = () => {
-    handleToggleIsDone(todo.id)
-  }
+    handleToggleIsDone(todo.id);
+  };
 
   const handleDeleteClick = () => {
-    handleDeleteTodo(todo.id)
-  }
+    handleDeleteTodo(todo.id);
+  };
 
   return (
     <TodoItemWrapper className={className} data-todo-id={todo.id}>
@@ -63,5 +65,5 @@ export default function TodoItem({ className, todo, handleDeleteTodo, handleTogg
         <RedButton onClick={handleDeleteClick}>刪除</RedButton>
       </TodoButtonWrapper>
     </TodoItemWrapper>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import './App.css';
 import styled from 'styled-components';
-import { MEDIA_QUERY_MD, MEDIA_QUERY_LG } from './constants/style';
+import { MEDIA_QUERY_MD, MEDIA_QUERY_LG } from '../../constants/style';
 
 const TodoItemWrapper = styled.div`
   display: flex;

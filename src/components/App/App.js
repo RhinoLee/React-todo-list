@@ -3,6 +3,7 @@ import "../../index.css"
 import styled from "styled-components";
 import LoginPage from "../../pages/LoginPage";
 import HomePage from "../../pages/HomePage";
+import PostPage from "../../pages/PostPage";
 import Header from "../Header";
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage></HomePage>
+          </Route>
+          <Route path="/posts/:postId">
+            <PostPage></PostPage>
           </Route>
           <Route exact path="/login">
             <LoginPage></LoginPage>
